@@ -5,8 +5,9 @@
 #   - Should be able to access the current `balance` of an account at any time.
 
 #from owner import Owner
-# from bank import Bank
+#from bank import Bank
 import csv
+from datetime import datetime
 
 class Account:
 
@@ -21,7 +22,7 @@ class Account:
 
     @classmethod
     def all_accounts(cls):
-        file_name = '../support/accounts.csv'
+        file_name = './support/accounts.csv'
         account_list = []
         headings = ['id','balance','open_date']
 
@@ -30,15 +31,16 @@ class Account:
             reader.fieldnames = headings
 
             for row in reader:
-                account_list.append(Account(row['id'],int(row['balance']),row['open_date']))
+                account_list.append(Account(int(row['id']),int(row['balance']),datetime.fromisoformat((row['open_date']).replace(" -0800", ""))))
             
             # print(account_list)
 
         return account_list
 
-    # def find(self, id):
-    #     check = next((item for item in Bank.accounts if item.id == id), 'there is no account with that id')
-    #     return check
+    @classmethod
+    def find(cls, id):
+        check = next((item for item in cls.all_accounts() if item.id == id), 'there is no account with that id')
+        return check
 
     # withdraws money, returns account balance
     def withdraw(self, withdrawal_amt):

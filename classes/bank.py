@@ -1,6 +1,6 @@
 # contains Account class and any future bank account logic
 
-from account import Account
+from classes.account import Account
 
 class Bank:
     def __init__(self, name):
@@ -13,5 +13,9 @@ class Bank:
             print(account)
         return '* * * * * * * * * * * * * * * * *'
 
-new_bank = Bank('super cool')
-print(new_bank)
+    def find(self):
+        input_id = input('please enter an id to search by: ')
+        return Account.find(int(input_id))
+        
+
+
