@@ -49,7 +49,7 @@ class Account:
             self.balance -= withdrawal_amt
 
         else:
-            raise Exception('You do not have enough money for this transaction')
+            print('You do not have enough money for this transaction, so it was cancelled.')
 
         return self.balance
 

@@ -4,4 +4,4 @@ from classes.bank import Bank
 # from classes.owner import Owner
 
 new_bank = Bank('super cool')
-print(new_bank.find())
+print(new_bank)

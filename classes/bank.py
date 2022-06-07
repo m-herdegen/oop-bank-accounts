@@ -1,16 +1,18 @@
 # contains Account class and any future bank account logic
 
 from classes.account import Account
+from classes.owner import Owner
 
 class Bank:
     def __init__(self, name):
         self.name = name
         self.accounts = Account.all_accounts()
+        self.owners = Owner.all_owners()
 
     #future bank logic
     def __str__(self):
-        for account in self.accounts:
-            print(account)
+        for owner in self.owners:
+            print(owner)
         return '* * * * * * * * * * * * * * * * *'
 
     def find(self):
